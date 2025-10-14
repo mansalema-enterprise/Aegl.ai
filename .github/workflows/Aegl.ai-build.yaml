@@ -1,0 +1,60 @@
+# To better understand this file read this:
+# https://docs.ionos.space/docs/github-actions-customization/
+
+name: "Deploy Now: Execute Build"
+
+on:
+  workflow_call:
+    inputs:
+      site-url:
+        required: true
+        type: string
+      branch-id:
+        required: true
+        type: string
+
+env:
+  DEPLOYMENT_FOLDER: dist
+
+jobs:
+# Please do not rename this job
+  build-project:
+    name: build Aegl.ai
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: v22.x
+
+      - name: Build Node assets
+        env:
+          CI: true
+          SITE_URL: ${{ inputs.site-url }}
+          VITE_FIREBASE_API_KEY: AIzaSyC-R2EKBnULSLL80-vGZNtVagYFDfGy5Xg
+          VITE_FIREBASE_APP_ID: 1:486960310117:web:764ca3e2fe2e8a59bbe38c
+          VITE_FIREBASE_AUTH_DOMAIN: salema-dce69.firebaseapp.com
+          VITE_FIREBASE_MESSAGING_SENDER_ID: 486960310117
+          VITE_FIREBASE_PROJECT_ID: salema-dce69
+          VITE_FIREBASE_STORAGE_BUCKET: salema-dce69.appspot.com
+        run: |
+          npm install 
+          npm run build
+
+# Please do not touch the following action
+      - name: Store deployment content
+        uses: ionos-deploy-now/artifact-action@v1
+        with:
+          api-key: ${{ secrets.IONOS_API_KEY }}
+          service-host: api-us.ionos.space
+          project-id: b102c698-fc67-4418-b918-91d3f2645efb
+          branch-id: ${{ inputs.branch-id }}
+          version: ${{ github.sha }}
+          folder: ${{ env.DEPLOYMENT_FOLDER }}
+          config-file: .deploy-now/Aegl.ai/config.yaml
+          action: upload
