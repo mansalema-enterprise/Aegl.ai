@@ -28,7 +28,7 @@ const DashboardSelection = () => {
         </div>
         <div className="text-center mb-12">
           <Logo
-            src="/uploads/logo1.png"
+            src="/uploads/logo2.jpg"
             alt="AEGL - Auditive Engine Generative Ledger logo"
             className="h-32 w-auto object-contain mx-auto mb-6"
           />

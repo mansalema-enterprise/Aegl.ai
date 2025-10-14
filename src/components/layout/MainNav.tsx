@@ -126,7 +126,7 @@ export function MainNav({ userType }: MainNavProps) {
           className="flex items-center gap-2 font-semibold"
         >
           <img
-            src="/uploads/logo.png"
+            src="/uploads/logo2.jpg"
             alt="AEGL Logo"
             className="h-10 w-10 object-contain"
           />

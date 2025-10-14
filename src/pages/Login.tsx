@@ -27,7 +27,7 @@ const Login = () => {
       <div className="w-full max-w-md text-center mb-8">
         <div className="flex justify-center mb-8">
           <img
-            src="/uploads/spell out logo.png"
+            src="/uploads/logo2.jpg"
             alt="AEGL - Auditive Engine Generative Ledger"
             className="h-28 w-auto mx-auto"
           />
