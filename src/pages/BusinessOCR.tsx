@@ -6,11 +6,6 @@ const BusinessOCR = () => {
   const { t } = useLanguage();
 
   return (
-    <DashboardLayout
-      userType="business"
-      userName="Alex Johnson"
-      companyName="Johnson Enterprises Ltd"
-    >
       <div className="space-y-4">
         <div>
           <h1 className="text-2xl font-bold">
@@ -20,7 +15,6 @@ const BusinessOCR = () => {
         </div>
         <OCRProcessor />
       </div>
-    </DashboardLayout>
   );
 };
 

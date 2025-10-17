@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { BusinessDashboardContent } from "@/components/dashboard/BusinessDashboardContent";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
@@ -48,12 +47,7 @@ const BusinessDashboard = () => {
   }
 
   return (
-    <DashboardLayout
-      userType="business"
-      userId=""
-    >
       <BusinessDashboardContent />
-    </DashboardLayout>
   );
 };
 

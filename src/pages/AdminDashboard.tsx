@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { AdminUserTable } from "@/components/admin/AdminUserTable";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -38,10 +37,6 @@ const AdminDashboard = () => {
 
   if (!isAdmin) {
     return (
-      <DashboardLayout
-        userId=""
-        userType="business"
-      >
         <div className="container mx-auto py-6">
           <Card>
             <CardContent className="pt-6">
@@ -51,15 +46,10 @@ const AdminDashboard = () => {
             </CardContent>
           </Card>
         </div>
-      </DashboardLayout>
     );
   }
 
   return (
-    <DashboardLayout
-      userId=""
-      userType="business"
-    >
       <div className="container mx-auto py-6">
         <Card>
           <CardHeader>
@@ -79,7 +69,6 @@ const AdminDashboard = () => {
           </CardContent>
         </Card>
       </div>
-    </DashboardLayout>
   );
 };
 

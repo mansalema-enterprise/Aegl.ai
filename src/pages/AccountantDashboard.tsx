@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { AccountantDashboardContent } from "@/components/dashboard/AccountantDashboardContent";
 import { useToast } from "@/hooks/use-toast";
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
@@ -56,24 +55,15 @@ const AccountantDashboard = () => {
 
   if (loading) {
     return (
-      <DashboardLayout
-        userType="accountant"
-        userId=""
-      >
         <div className="container mx-auto py-6 text-center text-gray-500">
           Loading dashboard...
         </div>
-      </DashboardLayout>
+
     );
   }
 
   return (
-    <DashboardLayout
-      userType="accountant"
-      userId=""
-    >
       <AccountantDashboardContent />
-    </DashboardLayout>
   );
 };
 
