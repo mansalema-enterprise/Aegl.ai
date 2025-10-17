@@ -1,3 +1,4 @@
+import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import {
   Card,
   CardContent,
@@ -28,10 +29,12 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useState } from "react";
+import { StartTradeDialog } from "@/components/trade/StartTradeDialog";
 
 const InternationalTrade = () => {
   const { t } = useLanguage();
   const [selectedCountry, setSelectedCountry] = useState<string>("");
+  const [isTradeDialogOpen, setIsTradeDialogOpen] = useState(false);
 
   const countries = [
     { code: "brazil", name: t("trade.brazil") },
@@ -233,7 +236,7 @@ const InternationalTrade = () => {
   };
 
   return (
-    <div className="space-y-6">
+      <div className="space-y-6">
         {/* Header Section */}
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
@@ -245,16 +248,19 @@ const InternationalTrade = () => {
           <div className="flex justify-center gap-4 mt-6">
             <Button
               className="bg-green-600 hover:bg-green-700"
-              onClick={() => {
-                // Navigate to trade initiation flow or show dialog
-                console.log("Starting new trade...");
-              }}
+              onClick={() => setIsTradeDialogOpen(true)}
             >
               {t("trade.startNewTrade")}
             </Button>
             <Button variant="outline">{t("trade.viewActiveShipments")}</Button>
           </div>
         </div>
+
+        {/* Start Trade Dialog */}
+        <StartTradeDialog
+          open={isTradeDialogOpen}
+          onOpenChange={setIsTradeDialogOpen}
+        />
 
         {/* Country Selection */}
         <Card className="mb-6">
